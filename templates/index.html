@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AgriSense — Plant Disease Detection</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; background: #f4f7f2; }
+  h1 { color: #2e7d32; }
+  .card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  #dropzone { border: 2px dashed #81c784; border-radius: 10px; padding: 40px; text-align: center; cursor: pointer; color: #555; }
+  #dropzone.dragover { background: #e8f5e9; }
+  #preview { max-width: 100%; margin-top: 16px; border-radius: 8px; display: none; }
+  #result { margin-top: 20px; display: none; }
+  .confidence-bar { background: #eee; border-radius: 6px; height: 10px; overflow: hidden; margin: 8px 0; }
+  .confidence-fill { background: #43a047; height: 100%; }
+  .label { font-size: 1.2em; font-weight: 600; color: #1b5e20; }
+  #loading { display: none; color: #666; }
+</style>
+</head>
+<body>
+  <h1>🌿 AgriSense</h1>
+  <p>Upload a leaf photo to detect disease and get treatment advice.</p>
+
+  <div class="card">
+    <div id="dropzone">
+      <p>Click or drag a leaf image here</p>
+      <input type="file" id="fileInput" accept="image/*" style="display:none">
+    </div>
+    <img id="preview">
+    <p id="loading">Analyzing image...</p>
+    <div id="result">
+      <p class="label" id="resultLabel"></p>
+      <div class="confidence-bar"><div class="confidence-fill" id="confidenceFill"></div></div>
+      <p id="confidenceText"></p>
+      <p id="descriptionText"></p>
+      <p><strong>Treatment:</strong> <span id="treatmentText"></span></p>
+    </div>
+  </div>
+
+<script>
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const loading = document.getElementById('loading');
+const result = document.getElementById('result');
+
+dropzone.addEventListener('click', () => fileInput.click());
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+dropzone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropzone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file) {
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = 'block';
+  result.style.display = 'none';
+  loading.style.display = 'block';
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  fetch('/predict', { method: 'POST', body: formData })
+    .then(res => res.json())
+    .then(data => {
+      loading.style.display = 'none';
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+      document.getElementById('resultLabel').textContent = data.class.replace(/_/g, ' ');
+      document.getElementById('confidenceFill').style.width = data.confidence + '%';
+      document.getElementById('confidenceText').textContent = `Confidence: ${data.confidence}%`;
+      document.getElementById('descriptionText').textContent = data.description;
+      document.getElementById('treatmentText').textContent = data.treatment;
+      result.style.display = 'block';
+    })
+    .catch(err => {
+      loading.style.display = 'none';
+      alert('Error: ' + err);
+    });
+}
+</script>
+</body>
+</html>

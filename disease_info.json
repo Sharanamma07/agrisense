@@ -1,0 +1,62 @@
+{
+  "Pepper__bell___Bacterial_spot": {
+    "description": "Bacterial disease causing small, dark, water-soaked spots on leaves and fruit.",
+    "treatment": "Remove infected plant debris. Apply copper-based bactericide. Avoid overhead watering and working in wet fields."
+  },
+  "Pepper__bell___healthy": {
+    "description": "No disease detected — leaf appears healthy.",
+    "treatment": "Continue regular monitoring and standard care."
+  },
+  "Potato___Early_blight": {
+    "description": "Fungal disease causing concentric ring spots on older leaves, starting from the bottom of the plant.",
+    "treatment": "Remove infected lower leaves. Apply fungicide (chlorothalonil or copper-based). Rotate crops yearly."
+  },
+  "Potato___Late_blight": {
+    "description": "Aggressive fungal disease that can destroy a potato crop within days in humid conditions.",
+    "treatment": "Apply fungicide preventively. Destroy infected plants immediately. Ensure good field drainage."
+  },
+  "Potato___healthy": {
+    "description": "No disease detected — leaf appears healthy.",
+    "treatment": "Continue regular monitoring and standard care."
+  },
+  "Tomato_Bacterial_spot": {
+    "description": "Bacterial disease causing small, dark, greasy-looking spots on leaves and fruit.",
+    "treatment": "Use copper-based bactericides. Avoid overhead irrigation. Remove and destroy infected plant material."
+  },
+  "Tomato_Early_blight": {
+    "description": "Fungal disease causing concentric ring spots (target-like pattern) on older, lower leaves.",
+    "treatment": "Remove infected leaves. Apply fungicide. Mulch to prevent soil splash onto leaves."
+  },
+  "Tomato_Late_blight": {
+    "description": "Fast-spreading fungal disease causing dark, water-soaked lesions, especially in cool, wet weather.",
+    "treatment": "Remove and destroy infected plants immediately. Apply fungicide preventively. Improve air circulation."
+  },
+  "Tomato_Leaf_Mold": {
+    "description": "Fungal disease causing pale green/yellow spots on upper leaf surfaces with olive-green mold underneath.",
+    "treatment": "Improve greenhouse/field ventilation to reduce humidity. Apply fungicide. Remove infected leaves."
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "description": "Fungal disease causing small circular spots with dark borders and light centers, mainly on lower leaves.",
+    "treatment": "Remove infected leaves promptly. Apply fungicide. Avoid overhead watering."
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "description": "Pest damage from tiny mites causing stippled, discolored leaves and fine webbing.",
+    "treatment": "Apply miticide or insecticidal soap. Increase humidity around plants, as mites thrive in dry conditions."
+  },
+  "Tomato__Target_Spot": {
+    "description": "Fungal disease causing brown lesions with concentric rings, resembling a target pattern.",
+    "treatment": "Apply fungicide. Remove infected debris. Improve air circulation between plants."
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    "description": "Viral disease spread by whiteflies, causing upward leaf curling and yellowing.",
+    "treatment": "Control whitefly populations with insecticide or sticky traps. Remove and destroy infected plants. No cure once infected."
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    "description": "Viral disease causing mottled light/dark green patterns on leaves and stunted growth.",
+    "treatment": "Remove and destroy infected plants. Disinfect tools between plants. No chemical cure — prevention is key."
+  },
+  "Tomato_healthy": {
+    "description": "No disease detected — leaf appears healthy.",
+    "treatment": "Continue regular monitoring and standard care."
+  }
+}
