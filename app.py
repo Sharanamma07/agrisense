@@ -10,6 +10,11 @@ import json
 import os
 import uuid
 
+import tensorflow as tf
+
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
 import numpy as np
 from flask import Flask, jsonify, render_template, request
 from PIL import Image
