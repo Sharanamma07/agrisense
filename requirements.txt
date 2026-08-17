@@ -1,5 +1,7 @@
 flask>=3.0.0
 pillow>=10.0.0
 numpy>=1.26.0
+ai-edge-litert
+requests>=2.31.0
+reportlab>=4.0.0
 gunicorn
-ai-edge-litert==2.1.6
